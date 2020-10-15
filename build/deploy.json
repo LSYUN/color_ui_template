@@ -1,0 +1,30 @@
+{
+  "weixin": {
+    "appId": "wxb386846fe8c9d48f",
+    "privateKeyPath": "build/keys/private.wxb386846fe8c9d48f.key",
+    "version": "1.0.4"
+  },
+  "alipay": {
+    "appId": "2021001198691577",
+    "toolId": "57df77fe73494dd7a93c4a44df0c7b00",
+    "privateKeyPath": "build/keys/pkcs8-private-pem",
+    "version": "0.0.4"
+  },
+  "app": {
+    "appId": "__UNI__7552B8F",
+    "server": {
+      "host": "",
+      "user": "",
+      "password": "",
+      "path": ""
+    }
+  },
+  "h5": {
+    "server": {
+      "host": "",
+      "user": "developer",
+      "password": "dev@123",
+      "path": "/data/color_ui_template"
+    }
+  }
+}
