@@ -5,6 +5,7 @@ const fs = require('fs');
 const path = require('path');
 const chalk = require('chalk');
 const zip = require('jszip')();
+const uploader = require('./fileUpload');
 
 const targetPath = path.resolve(process.cwd(), 'dist/build');
 const sourceDir = path.resolve(process.cwd(), 'dist/build/app-plus');
@@ -42,12 +43,13 @@ function buildWgt({ appId }) {
   }).then(function (content) {
     fs.writeFileSync(`${ targetPath }/wgt.zip`, content, "utf-8");//将打包的内容写入 当前目录下的 result.zip中
     fs.renameSync(`${ targetPath }/wgt.zip`, `${ targetPath }/${ appId }.wgt`,);
-    console.log(chalk.green('wgt打包完成'));
+    console.log(chalk.green('wgt端打包完成'));
   });
 }
 
 const upload = (config) => {
   buildWgt(config);
+  uploader(config);
 };
 
 module.exports = { upload };

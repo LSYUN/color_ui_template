@@ -7,12 +7,12 @@ const ci = require('miniprogram-ci');
 
 // 代码上传
 const upload = (config) => {
-  const { appId, privateKeyPath, version, desc = undefined } = config;
+  const { appId, privateKeyPath, version, desc = undefined, sourceDir } = config;
   (async () => {
     const project = new ci.Project({
       appid: appId,
       type: 'miniProgram',
-      projectPath: path.resolve(process.cwd(), 'dist/build/mp-weixin'),
+      projectPath: path.resolve(process.cwd(), sourceDir),
       privateKeyPath: path.resolve(process.cwd(), privateKeyPath),
       ignores: ['node_modules/**/*'],
     });
@@ -25,7 +25,7 @@ const upload = (config) => {
       },
       onProgressUpdate: console.log,
     });
-    console.log(uploadResult)
+    console.log('微信端上传结果：', uploadResult)
   })();
 };
 

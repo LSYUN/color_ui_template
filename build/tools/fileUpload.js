@@ -19,7 +19,7 @@ function Connect(server, then) {
   conn.on("ready", function () {
     then(conn);
   }).on('error', function (err) {
-    console.log("connect error!");
+    console.log("connect error!", err);
   }).on('end', function () {
     console.log("connect end!");
   }).on('close', function (had_error) {
@@ -166,7 +166,7 @@ function uploadDir(server, localDir, remoteDir, then) {
 }
 
 function uploader(config) {
-  let { server: { host, port, username, password, sourceDir, path: remoteDir } } = config;
+  let { server: { host, port, username, password }, sourceDir, targetDir } = config;
 
   const chmod = spawn('chmod', ['-R', '777', path.resolve(process.cwd(), sourceDir)]);
 
@@ -178,9 +178,8 @@ function uploader(config) {
       username,
       password
     };
-    uploadDir(server, sourceDir + '/', remoteDir, function (err) {
-      if (err)
-        throw err;
+    uploadDir(server, sourceDir + '/', targetDir, function (err) {
+      if (err) throw err;
       console.log('success')
     });
   });

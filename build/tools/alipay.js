@@ -21,7 +21,7 @@ const readFile = (privateKeyPath) => {
 
 // 代码上传
 const upload = async (config) => {
-  const { appId, toolId, privateKeyPath, version, desc = undefined } = config;
+  const { appId, toolId, privateKeyPath, version, desc = undefined, sourceDir } = config;
 
   let privateKey = await readFile(privateKeyPath);
   if (!privateKey) return;
@@ -33,18 +33,18 @@ const upload = async (config) => {
   });
   const uploadResult = await alipaydev.miniUpload({
     appId,
-    project: path.resolve(process.cwd(), 'dist/build/mp-alipay'),
+    project: path.resolve(process.cwd(), sourceDir),
     packageVersion: version,
     clientType: 'alipay',
     experience: true,
     onProgressUpdate(info) {
-      const { status, data } = info;
-      console.log('onProgressUpdate', status, data)
+      // const { status, data } = info;
+      // console.log('onProgressUpdate', status, data)
     }
   }).catch(e => {
-    console.log('error', e);
+    console.log('支付宝端上传异常：', e);
   });
-  console.log('uploadResult', uploadResult)
+  console.log('支付宝端上传结果：', uploadResult)
 };
 
 module.exports = { upload };
