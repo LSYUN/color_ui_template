@@ -14,17 +14,18 @@
     "appId": "__UNI__7552B8F",
     "server": {
       "host": "",
-      "user": "",
+      "username": "",
       "password": "",
       "path": ""
     }
   },
   "h5": {
     "server": {
-      "host": "",
-      "user": "developer",
-      "password": "dev@123",
-      "path": "/data/color_ui_template"
+      "host": "120.79.30.239",
+      "port": "22",
+      "username": "root",
+      "password": "tobeno.1lsyun",
+      "path": "/data/app/color_ui_template"
     }
   }
 }

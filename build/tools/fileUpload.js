@@ -165,39 +165,29 @@ function uploadDir(server, localDir, remoteDir, then) {
 
 }
 
-function uploader(server) {
-  let { host, user: username, password, sourceDir, path: remoteDir } = server;
+function uploader(config) {
+  let { server: { host, port, username, password, sourceDir, path: remoteDir } } = config;
+  console.log(host, port, username, password, sourceDir, remoteDir);
 
-  var serverParam = {
-    host,
-    port: 20,
-    username,
-    password
-  };
-  uploadDir(serverParam, sourceDir + '/', remoteDir, function (err) {
-    if (err)
-      throw err;
-    console.log('success')
+  const chmod = spawn('chmod', ['-R', '777', path.resolve(process.cwd(), sourceDir)]);
+
+  chmod.on('exit', function (code, signal) {
+    console.log('auth success');
+    var server = {
+      host,
+      port,
+      username,
+      password
+    };
+    uploadDir(server, sourceDir + '/', '/data/app/color_ui_template', function (err) {
+      if (err)
+        throw err;
+      console.log('success')
+    });
   });
-
-  // const chmod = spawn('chmod', ['-R', '777', path.resolve(process.cwd(), sourceDir)]);
-  // chmod.on('exit', function (code, signal) {
-  //   console.log('auth success');
-  //   var server = {
-  //     host,
-  //     port,
-  //     username,
-  //     password
-  //   };
-  //   uploadDir(server, sourceDir + '/', remoteDir, function (err) {
-  //     if (err)
-  //       throw err;
-  //     console.log('success')
-  //   });
-  // });
-  // chmod.on('error', (err) => {
-  //   console.error('启动子进程失败', err);
-  // });
+  chmod.on('error', (err) => {
+    console.error('启动子进程失败', err);
+  });
 
 }
 
