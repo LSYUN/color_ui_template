@@ -167,7 +167,6 @@ function uploadDir(server, localDir, remoteDir, then) {
 
 function uploader(config) {
   let { server: { host, port, username, password, sourceDir, path: remoteDir } } = config;
-  console.log(host, port, username, password, sourceDir, remoteDir);
 
   const chmod = spawn('chmod', ['-R', '777', path.resolve(process.cwd(), sourceDir)]);
 
@@ -179,7 +178,7 @@ function uploader(config) {
       username,
       password
     };
-    uploadDir(server, sourceDir + '/', '/data/app/color_ui_template', function (err) {
+    uploadDir(server, sourceDir + '/', remoteDir, function (err) {
       if (err)
         throw err;
       console.log('success')

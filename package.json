@@ -41,7 +41,7 @@
     "test:mp-baidu": "cross-env UNI_PLATFORM=mp-baidu jest -i",
     "test:mp-weixin": "cross-env UNI_PLATFORM=mp-weixin jest -i",
     "key:alipay": "alipaydev key create",
-    "build:all": "npm run build:mp-weixin & npm run build:mp-alipay & npm run build:app-plus & node build",
+    "build:all": "npm run build:mp-weixin & npm run build:mp-alipay & npm run build:app-plus & npm run build:h5 & node build",
     "build:temp": "node build"
   },
   "dependencies": {
