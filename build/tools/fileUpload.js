@@ -166,7 +166,7 @@ function uploadDir(server, localDir, remoteDir, then) {
 }
 
 function uploader(config) {
-  let { server: { host, port, username, password }, sourceDir, targetDir } = config;
+  let { server: { host, port, username, privateKeyPath }, sourceDir, targetDir } = config;
 
   const chmod = spawn('chmod', ['-R', '777', path.resolve(process.cwd(), sourceDir)]);
 
@@ -176,7 +176,7 @@ function uploader(config) {
       host,
       port,
       username,
-      password
+      privateKey: fs.readFileSync(path.resolve(process.cwd(), privateKeyPath))
     };
     uploadDir(server, sourceDir + '/', targetDir, function (err) {
       if (err) throw err;

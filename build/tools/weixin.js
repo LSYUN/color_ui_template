@@ -7,7 +7,7 @@ const ci = require('miniprogram-ci');
 
 // 代码上传
 const upload = (config) => {
-  const { appId, privateKeyPath, version, desc = undefined, sourceDir } = config;
+  const { appId, version, desc = undefined, sourceDir, server: { privateKeyPath } } = config;
   (async () => {
     const project = new ci.Project({
       appid: appId,

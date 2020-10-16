@@ -1,15 +1,19 @@
 {
   "weixin": {
     "appId": "wxb386846fe8c9d48f",
-    "privateKeyPath": "build/keys/private.wxb386846fe8c9d48f.key",
-    "version": "1.0.5",
+    "server": {
+      "privateKeyPath": "build/keys/private.wxb386846fe8c9d48f.key"
+    },
+    "version": "1.0.6",
     "sourceDir": "dist/build/mp-weixin"
   },
   "alipay": {
     "appId": "2021001198691577",
-    "toolId": "57df77fe73494dd7a93c4a44df0c7b00",
-    "privateKeyPath": "build/keys/pkcs8-private-pem",
-    "version": "0.0.7",
+    "server": {
+      "toolId": "57df77fe73494dd7a93c4a44df0c7b00",
+      "privateKeyPath": "build/keys/pkcs8-private-pem"
+    },
+    "version": "0.0.8",
     "sourceDir": "dist/build/mp-alipay"
   },
   "app": {
@@ -18,7 +22,7 @@
       "host": "120.79.30.239",
       "port": "22",
       "username": "root",
-      "password": "tobeno.1lsyun"
+      "privateKeyPath": "tobeno.1lsyun"
     },
     "targetDir": "/data/app/color_ui_template_app",
     "sourceDir": "dist/build/h5"
@@ -28,7 +32,7 @@
       "host": "120.79.30.239",
       "port": "22",
       "username": "root",
-      "password": "tobeno.1lsyun"
+      "privateKeyPath": "tobeno.1lsyun"
     },
     "targetDir": "/data/app/color_ui_template_h5",
     "sourceDir": "dist/build/h5"

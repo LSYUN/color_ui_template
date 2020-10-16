@@ -21,7 +21,7 @@ const readFile = (privateKeyPath) => {
 
 // 代码上传
 const upload = async (config) => {
-  const { appId, toolId, privateKeyPath, version, desc = undefined, sourceDir } = config;
+  const { appId, version, desc = undefined, sourceDir, server: { toolId, privateKeyPath } } = config;
 
   let privateKey = await readFile(privateKeyPath);
   if (!privateKey) return;
